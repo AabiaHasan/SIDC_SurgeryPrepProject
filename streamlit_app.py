@@ -3,7 +3,6 @@ import pandas as pd
 import datetime
 from io import StringIO
 import fitz  # PyMuPDF for PDF processing
-from transformers import pipeline
 from PIL import Image
 
 # Set page config with a blue theme
@@ -40,6 +39,9 @@ st.markdown(
     }
     h1, h2, h3 {
         color: #0d47a1;
+    }
+    .stSidebar {
+        background-color: #bbdefb !important;
     }
     </style>
     """,
@@ -113,7 +115,7 @@ if tab == "🩺 Patients":
                 st.write(f"**📞 Contact:** {patient['Contact']}")
                 st.write(f"**📬 Last Contacted:** {patient['Last Contacted']}")
 
-# Document Upload and AI Summary
+# Document Upload and Placeholder for AI Summary
 elif tab == "📄 Documents":
     st.header("📂 Upload Medical Documents")
     uploaded_file = st.file_uploader("📤 Upload a PDF", type=["pdf"])
@@ -129,9 +131,6 @@ elif tab == "📄 Documents":
         
         pdf_text = extract_text_from_pdf(uploaded_file)
         
-        # AI Summarization
-        summarizer = pipeline("summarization")
-        summary = summarizer(pdf_text, max_length=150, min_length=50, do_sample=False)[0]['summary_text']
-        
+        # Placeholder for AI Summary
         st.subheader("🤖 AI-Generated Summary")
-        st.write(summary)
+        st.write("🚧 AI summary functionality is under development. Please check back later.")
